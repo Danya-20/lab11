@@ -1,74 +1,66 @@
 # lab11
-# Task 1: Sum of Squares
-def sum_of_squares(arr):
-    return sum(x ** 2 for x in arr)
+2.2 Мета роботи:
+Метою лабораторної роботи є ознайомлення з різними алгоритмами обробки та маніпулювання масивами, розв’язання задач на обробку масивів та їх елементів, розробка функцій для реалізації цих алгоритмів, а також практичне застосування цих алгоритмів у Python.
 
-# Task 2: Filter and Sum
-def filter_and_sum(arr):
-    avg = sum(arr) / len(arr)
-    return sum(x for x in arr if x >= avg)
+2.3 Опис завдання:
+Завдання включає реалізацію десяти різних задач для роботи з масивами:
 
-# Task 3: Sort by Frequency
-def sort_by_frequency(arr):
-    freq_dict = {}
-    for num in arr:
-        freq_dict[num] = freq_dict.get(num, 0) + 1
-    return sorted(arr, key=lambda x: (-freq_dict[x], x))
+Обчислення суми квадратів елементів масиву.
+Фільтрація масиву та обчислення суми елементів, які більші або рівні середньому значенню масиву.
+Сортування масиву за частотою елементів.
+Пошук відсутнього числа в послідовності.
+Знаходження найдовшої послідовності послідовних чисел.
+Обертання масиву на задану кількість позицій.
+Створення масиву добутків всіх елементів, крім поточного.
+Знаходження максимальної суми підмасиву.
+Виведення елементів матриці в спіральному порядку.
+Пошук k найближчих точок до початку координат.
+2.4 Виконання роботи:
+Для кожного завдання була розроблена функція, що реалізує відповідний алгоритм. Результати завдань були перевірені на тестових даних. Кожна лабораторна робота завантажена в окрему папку на GitHub.
 
-# Task 4: Find Missing Number
-def find_missing_number(arr):
-    n = len(arr) + 1
-    total = n * (n + 1) // 2
-    return total - sum(arr)
+Опис основних функцій:
 
-# Task 5: Longest Consecutive Sequence
-def longest_consecutive(arr):
-    num_set = set(arr)
-    max_length = 0
-    for num in num_set:
-        if num - 1 not in num_set:
-            current_num = num
-            current_length = 1
-            while current_num + 1 in num_set:
-                current_num += 1
-                current_length += 1
-            max_length = max(max_length, current_length)
-    return max_length
+sum_of_squares(arr):
 
-# Task 6: Rotate Array
-def rotate_array(arr, k):
-    k %= len(arr)
-    return arr[-k:] + arr[:-k]
+Обчислює суму квадратів елементів масиву.
+Приклад: sum_of_squares([1, 2, 3]) повертає 14.
+filter_and_sum(arr):
 
-# Task 7: Array of Products
-def array_of_products(arr):
-    result = []
-    left_product = 1
-    for num in arr:
-        result.append(left_product)
-        left_product *= num
-    right_product = 1
-    for i in range(len(arr) - 1, -1, -1):
-        result[i] *= right_product
-        right_product *= arr[i]
-    return result
+Обчислює суму елементів масиву, які більші або рівні середньому значенню масиву.
+Приклад: filter_and_sum([1, 2, 3, 4, 5]) повертає 12.
+sort_by_frequency(arr):
 
-# Task 8: Maximum Subarray Sum
-def max_subarray_sum(arr):
-    max_sum = curr_sum = arr[0]
-    for num in arr[1:]:
-        curr_sum = max(num, curr_sum + num)
-        max_sum = max(max_sum, curr_sum)
-    return max_sum
+Сортує масив за частотою елементів.
+Приклад: sort_by_frequency([1, 1, 2, 3, 2, 1]) повертає [1, 1, 1, 2, 2, 3].
+find_missing_number(arr):
 
-# Task 9: Spiral Order Matrix
-def spiral_order(matrix):
-    result = []
-    while matrix:
-        result += matrix.pop(0)
-        matrix = list(zip(*matrix))[::-1]
-    return result
+Знаходить відсутнє число в послідовності.
+Приклад: find_missing_number([1, 2, 4, 5]) повертає 3.
+longest_consecutive(arr):
 
-# Task 10: K Closest Points to Origin
-def k_closest_points(points, k):
-    return sorted(points, key=lambda x: x[0]**2 + x[1]**2)[:k]
+Знаходить найдовшу послідовність послідовних чисел.
+Приклад: longest_consecutive([100, 4, 200, 1, 3, 2]) повертає 4.
+rotate_array(arr, k):
+
+Обертає масив на задану кількість позицій.
+Приклад: rotate_array([1, 2, 3, 4, 5], 2) повертає [4, 5, 1, 2, 3].
+array_of_products(arr):
+
+Створює масив добутків всіх елементів, крім поточного.
+Приклад: array_of_products([1, 2, 3, 4]) повертає [24, 12, 8, 6].
+max_subarray_sum(arr):
+
+Знаходить максимальну суму підмасиву.
+Приклад: max_subarray_sum([−2, 1, −3, 4, −1, 2, 1, −5, 4]) повертає 6.
+spiral_order(matrix):
+
+Виводить елементи матриці в спіральному порядку.
+Приклад: spiral_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) повертає [1, 2, 3, 6, 9, 8, 7, 4, 5].
+k_closest_points(points, k):
+
+Пошук k найближчих точок до початку координат.
+Приклад: k_closest_points([[1, 3], [−2, 2]], 1) повертає [[-2, 2]].
+2.5 Результати:
+Було досягнуто успішне виконання кожної задачі з використанням розроблених функцій. Додаються скріншоти виводу програми для кожної функції, а також приклади вхідних та вихідних даних.
+
+
